@@ -8,19 +8,21 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-# User.create!(
-#   first_name: "Kevin",
-#   last_name: "downs",
-#   email: "kevindowns@gmail.com",
-#   password: "heyImKevin"
-# )
+user = User.find_by(email: "kevindowns@gmail.com")
+unless user
+  # user = User.create!(
+  #   first_name: "Kevin",
+  #   last_name: "downs",
+  #   email: "kevindowns@gmail.com",
+  #   password: "heyImKevin"
+  # )
+end
 
-
-file = URI.open("https://www.gallery-closet.jp/wp-content/uploads/2024/04/agc-14.jpg")
-daijiro = URI.open("https://static.wixstatic.com/media/38feaa_032afdaf7460436d9deefbff8a28c963~mv2.jpg/v1/crop/x_0,y_5,w_1397,h_1795/fill/w_606,h_782,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/D043DA4E-C6EC-48D9-B29F-C8B6D51A2560_edited.jpg")
-tomioko = URI.open("http://tomiokoyamagallery.com/wp/wp-content/uploads/2024/07/main_aya-Ito.jpg")
-hiro = URI.open("https://hiroshige-gallery.com/wp-content/uploads/slide01.jpg")
-kuko = URI.open("https://static.wixstatic.com/media/7101f6_bee6429ba9ba429c872959aebb5ecdb9~mv2.jpg/v1/fill/w_721,h_547,al_c,q_85,enc_auto/7101f6_bee6429ba9ba429c872959aebb5ecdb9~mv2.jpg")
+file = File.open(Rails.root.join('app', 'assets', 'images', 'closet.jpg'))
+daijiro = File.open(Rails.root.join('app', 'assets', 'images', 'daijiro.webp'))
+tomioko = File.open(Rails.root.join('app', 'assets', 'images', 'tomioko.jpg'))
+hiro = File.open(Rails.root.join('app', 'assets', 'images', 'hiroshige.jpg'))
+kuko = File.open(Rails.root.join('app', 'assets', 'images', 'kuko.webp'))
 
 gallery1 = Gallery.create!(
   name: "Hiroshige Gallery",
@@ -30,7 +32,7 @@ gallery1 = Gallery.create!(
   photos: [],
   booking: "[[08162024, 08172024, 08182024, 08192024]]",
   price: 30000,
-  user_id: 1
+  user: User.first
 )
 
 gallery2 = Gallery.create!(
@@ -41,7 +43,7 @@ gallery2 = Gallery.create!(
   photos: [],
   booking: "[[09012024, 09022024]]",
   price: 25000,
-  user_id: 1
+  user: User.first
 )
 
 gallery3 = Gallery.create!(
@@ -52,7 +54,7 @@ gallery3 = Gallery.create!(
   photos: [],
   booking: "[[08102024, 08112024, 08122024], [09242024, 09252024, 09262024, 09272024, 09282024,]]",
   price: 5000,
-  user_id: 1
+  user: User.first
 )
 
 gallery4 = Gallery.create!(
@@ -63,7 +65,7 @@ gallery4 = Gallery.create!(
   photos: [],
   booking: "[[09132024, 09142024, 09152024, 09162024 ], [09222024, 09232024, 09242024, 09252024, 09262024]]",
   price: 10000,
-  user_id: 1
+  user: User.first
 )
 
 gallery5 = Gallery.create!(
@@ -74,11 +76,11 @@ gallery5 = Gallery.create!(
   photos: [],
   booking: "[[09252024, 09262024, 09272024, 09282024 ], [09032024, 09042024, 09052024, 09062024, 09072024]]",
   price: 9000,
-  user_id: 1
+  user: User.first
 )
 
-gallery1.photos.attach(io: hiro, filename: "gallery.jpg", content_type: "image/jpg")
-gallery2.photos.attach(io: file, filename: "gallery2.jpg", content_type: "image/jpg")
-gallery3.photos.attach(io: kuko, filename: "gallery3.jpg", content_type: "image/jpg")
-gallery4.photos.attach(io: daijiro, filename: "gallery4.jpg", content_type: "image/jpg")
-gallery5.photos.attach(io: tomioko, filename: "gallery5.jpg", content_type: "image/jpg")
+gallery1.photos.attach(io: hiro, filename: "hiroshige.jpg", content_type: "image/jpg")
+gallery2.photos.attach(io: file, filename: "closet.jpg", content_type: "image/jpg")
+gallery3.photos.attach(io: kuko, filename: "kuko.webp", content_type: "image/webp")
+gallery4.photos.attach(io: daijiro, filename: "daijiro.webp", content_type: "image/webp")
+gallery5.photos.attach(io: tomioko, filename: "tomioko.jpg", content_type: "image/jpg")

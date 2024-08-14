@@ -1,6 +1,6 @@
 <%= render "shared/navbar" %>
 
-<div class="container">
+<div class="container-main">
   <%= simple_form_for [@gallery, @application] do |f| %>
     <%= f.input :start_date, as: :date, html5: true %>
     <%= f.input :end_date, as: :date, html5: true %>

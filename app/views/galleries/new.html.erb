@@ -1,14 +1,47 @@
+
+<div class="container-main">
 <%= simple_form_for @gallery do |f| %>
   <%= p @gallery %>
   <%= f.input :name, label: 'Gallery Name', required: true %>
 
-  <%= f.input :address, label: 'Address', required: true %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <%= simple_form_for @gallery do |f| %>
+        <div class="form-group">
+          <%= f.input :name, label: 'Gallery Name', required: true, input_html: { class: 'form-control-sm' } %>
+        </div>
 
-  <%= f.input :description, label: 'Description', as: :text, required: true %>
 
-  <%= f.input :price, label: 'Price', required: true %>
+        <div class="form-group">
+          <%= f.input :address, label: 'Address', required: true, input_html: { class: 'form-control-sm' } %>
+        </div>
 
-  <%= f.input :photo, as: :file, label: 'Gallery Photo' %>
+        <div class="form-group">
+          <%= f.input :description, label: 'Description', as: :text, required: true, input_html: { class: 'form-control-sm' } %>
+        </div>
+
+        <div class="form-group">
+          <%= f.input :price, label: 'Price', required: true, input_html: { class: 'form-control-sm' } %>
+        </div>
+
+        <div class="form-group">
+          <%= f.input :website, label: 'Website', placeholder: 'https://example.com', input_html: { class: 'form-control-sm' } %>
+        </div>
+
 
   <%= f.button :submit, 'Create Gallery', class: 'btn btn-primary' %>
 <% end %>
+
+        <div class="form-group">
+          <%= f.input :photos, as: :file, label: 'Gallery Photos', input_html: { multiple: true, class: 'form-control-sm' } %>
+        </div>
+
+        <div class="form-group">
+          <%= f.button :submit, 'Create Gallery', class: 'btn btn-primary btn-sm' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>

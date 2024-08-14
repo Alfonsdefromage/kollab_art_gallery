@@ -33,7 +33,7 @@
 <div class="page-container">
   <h2>Popular galleries world-wide</h2>
     <div class="grid-container" style="margin-top: 24px;">
-    <% @galleries.first(4).each do |gallery| %>
+    <% @galleries.each do |gallery| %>
       <div class="gallery-card grid-item" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div>
           <div class="image"><%= cl_image_tag gallery.photos.first.key, class: "image" %></div>
