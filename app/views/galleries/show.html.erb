@@ -86,17 +86,17 @@
       <div style="padding-bottom: 26px;">
         <h2>Reserve Gallery</h2>
       </div>
-      <div class="gallery-booking" style="background-color: #f0f0f0; border-radius: 8px; padding: 20px; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)">
+      <div class="gallery-booking" style="background-color: #f0f0f0; border-radius: 8px; padding: 20px; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)" data-controller="booking-price" data-booking-price-price-value="<%= @gallery.price.round %>">
         <h3>¥<%= @gallery.price.round %> Per day</h3>
         <div class="divider"></div>
         <%= form_with(model: [@gallery, @application], url: apply_gallery_path(@gallery), method: :post, local: true,  html: { multipart: true }) do |f| %>
           <div class="form-group">
             <%= f.label :start_date %>
-            <%= f.date_field :start_date, class: 'form-control', min: Date.today.to_s, required: true, input_html: { id: 'start_date' } %>
+            <%= f.date_field :start_date, class: 'form-control', required: true, input_html: { id: 'start_date', data: { booking_price_target: 'start_date', action: 'change->booking-price#update' }, min: Date.today } %>
           </div>
           <div class="form-group">
             <%= f.label :end_date %>
-            <%= f.date_field :end_date, class: 'form-control', required: true, input_html: {id: 'end_date'} %>
+            <%= f.date_field :end_date, class: 'form-control', required: true, input_html: {id: 'end_date', data: { booking_price_target: 'end_date', action: 'change->booking-price#update' }, min: Date.today } %>
           </div>
           <div class="mb-3">
             <%= f.label :photos, 'Images of your craft' %>
@@ -107,6 +107,10 @@
             <%= f.text_area :description, rows: 4, class: 'form-control' %>
           </div>
           <%= f.submit 'Reserve', class: 'btn btn-info mt-2' %>
+              <p class='mt-3 d-flex align-items-center justify-content-between'>
+              <span data-booking-price-target='info'></span>
+              <span class='fw-bold' data-booking-price-target='price'></span>
+    </p>
         <% end %>
       </div>
     </div>
