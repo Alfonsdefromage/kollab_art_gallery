@@ -1,7 +1,7 @@
 <h1>Kollab 🎨</h1>
 <p>Find the <strong>perfect space</strong> for your artwork.</p>
 
-<img src="Kollab-Show-1.png">
+<img src="app/assets/images/Kollab-Show-1.png">
 
 <h2>Features ✨</h2>
 <ul>
@@ -10,8 +10,8 @@
   <li>Book a gallery you like to display your artwork.</li>
 </ul>
 
-<img src="Kollab-Show-2.png">
-<img src="Kollab-Show-3.png">
+<img src="app/assets/images/Kollab-Show-2.png">
+<img src="app/assets/images/Kollab-Show-3.png">
 
 
 <h2>TECH STACK 👨‍💻</h2>
